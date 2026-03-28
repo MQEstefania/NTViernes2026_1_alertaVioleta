@@ -28,7 +28,7 @@ def generar_usuaria(numeroUsuaria):
         fecha=fechaInicio+timedelta(days=random.randint(0,60))
 
         usuaria={
-            "id": random.randint(0,5000),
+            "id": random.randint(0,6000),
             "nombre": random.choice(listaNombres),
             "apellido": random.choice(listaApellidos),
             "email": random.choice(listaEmail),
