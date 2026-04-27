@@ -22,3 +22,30 @@ print(df)
 
 print("\nDATOS LIMPIOS")
 print(df_limpio)
+
+
+
+# Zona para importar simulaciones
+from simulacion_errores_profesionales import generar_simulacion_errores_profesional
+
+# Zona para importar limpiezas
+from notebook.limpieza_profesional import limpiar_simulacion_errores_profesional
+
+# Zona para importar descripciones
+from notebook.descripcion_profesional import describir_estructura, describir_estadisticas, describir_categorias, describir_fechas
+
+# Creando las simulaciones
+simulaciones = generar_simulacion_errores_profesional(10)
+
+# Ordenando las simulaciones
+simulaciones_ordenadas = pd.DataFrame(simulaciones)
+
+# Limpiando el set de datos
+simulaciones_limpias = limpiar_simulacion_errores_profesional(simulaciones_ordenadas)
+print(simulaciones_limpias)
+
+# Describir el set de datos
+describir_estructura(simulaciones_limpias)
+describir_estadisticas(simulaciones_limpias)
+describir_categorias(simulaciones_limpias)
+describir_fechas(simulaciones_limpias)

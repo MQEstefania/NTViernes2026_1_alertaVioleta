@@ -16,10 +16,6 @@ def limpiar_simulacion_errores_usuaria(data_frame):
         pd.NA
     )
 
-    
-    
-    
-
     #3.Convertir columnas numéricas
     data_frame_limpio["id"]=pd.to_numeric(data_frame_limpio["id"]) #esto convierte a numérico y si no 
     #puede lo pone como NA   
@@ -40,9 +36,7 @@ def limpiar_simulacion_errores_usuaria(data_frame):
 
     #7. Eliminar valores inválidos en la columna id (valores negativos o del valor menor que tenga en 
     # mis datos)    
-    data_frame_limpio=data_frame_limpio[data_frame_limpio["id"] > 0]
-
-    data_frame_limpio=data_frame_limpio[data_frame_limpio['telefono'].str.len() == 10]
+    data_frame_limpio=data_frame_limpio[data_frame_limpio["id"] >0]
 
     #8. Eliminar duplicados
     data_frame_limpio=data_frame_limpio.drop_duplicates()
