@@ -28,7 +28,7 @@ def generar_simulacion_errores_usuaria(numeroSimulaciones):
             "telefono": random.choice(telefonos), 
             "ubicacion": random.choice(ubicaciones), 
             "contraseña": random.choice(contraseñas),  
-            "fecha_nacimiento": fechaInicio + timedelta(days=random.randint(0,10000)),  
+            "fecha_nacimiento": fechaInicio + timedelta(days=random.randint(0,1000)),  
             "fecha_registro": fechaInicio + timedelta(days=random.randint(0,2000))  
         }
 

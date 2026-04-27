@@ -1,51 +1,75 @@
 
 import pandas as pd
 
-#Acá estoy importando las funciones
-from simulacion_errores_usuaria import generar_simulacion_errores_usuaria
+# ===== USUARIAS =====
+from util.simulacion_errores_usuaria import generar_simulacion_errores_usuaria
 from notebook.limpieza_usuaria import limpiar_simulacion_errores_usuaria
+from notebook.descripcion_usuaria import (
+    describir_estructura,
+    describir_estadisticas,
+    describir_categoricas,
+    describir_fechas
+)
 
-datos_simulacion = generar_simulacion_errores_usuaria(10) #Generar datos ( esto son los que ya vienen con errores)
+print("\n===== USUARIAS =====")
 
-df = pd.DataFrame(datos_simulacion) #Acá se va a convertir a DataFrame
+# 🔹 Simulación (con errores)
+simulaciones_usuaria = generar_simulacion_errores_usuaria(10)
 
-df_limpio = limpiar_simulacion_errores_usuaria(df) #Acá se va a limpiar los datos
+# 🔹 Convertir a DataFrame
+df_usuaria = pd.DataFrame(simulaciones_usuaria)
 
-#simulaciones_limpias=limpiar_simulacion(simulaciones_ordenadas)
-#print(simulaciones_ordenadas_limpias) #Imprimimos el DataFrame limpio para verificar los resultados de 
-#la limpieza y asegurarnos de que los datos estén en el formato correcto y sin errores. Esto me arrojó error
-#la ia me explicó que esas funciones no existen, por lo que me mandó a imprimir así: 
+# 🔹 Mostrar datos sucios
+print("\nDATOS SUCIOS (con errores)")
+print(df_usuaria)
 
-# Mostrar resultados
-print("DATOS SUCIOS")
-print(df)
+# 🔹 Limpieza
+df_usuaria_limpio = limpiar_simulacion_errores_usuaria(df_usuaria)
 
+# 🔹 Mostrar datos limpios
 print("\nDATOS LIMPIOS")
-print(df_limpio)
+print(df_usuaria_limpio)
+
+# 🔹 Análisis
+print("\n--- ANÁLISIS USUARIAS ---")
+describir_estructura(df_usuaria_limpio)
+describir_estadisticas(df_usuaria_limpio)
+describir_categoricas(df_usuaria_limpio)
+describir_fechas(df_usuaria_limpio)
 
 
-
-# Zona para importar simulaciones
-from simulacion_errores_profesionales import generar_simulacion_errores_profesional
-
-# Zona para importar limpiezas
+# ===== PROFESIONALES =====
+from util.simulacion_errores_profesionales import generar_simulacion_errores_profesional
 from notebook.limpieza_profesional import limpiar_simulacion_errores_profesional
+from notebook.descripcion_profesional import (
+    describir_estructura,
+    describir_estadisticas,
+    describir_categoricas,
+    describir_fechas
+)
 
-# Zona para importar descripciones
-from notebook.descripcion_profesional import describir_estructura, describir_estadisticas, describir_categorias, describir_fechas
+print("\n===== PROFESIONALES =====")
 
-# Creando las simulaciones
-simulaciones = generar_simulacion_errores_profesional(10)
+# 🔹 Simulación (con errores)
+simulaciones_prof = generar_simulacion_errores_profesional(10)
 
-# Ordenando las simulaciones
-simulaciones_ordenadas = pd.DataFrame(simulaciones)
+# 🔹 Convertir a DataFrame
+df_prof = pd.DataFrame(simulaciones_prof)
 
-# Limpiando el set de datos
-simulaciones_limpias = limpiar_simulacion_errores_profesional(simulaciones_ordenadas)
-print(simulaciones_limpias)
+# 🔹 Mostrar datos sucios
+print("\nDATOS SUCIOS (con errores)")
+print(df_prof)
 
-# Describir el set de datos
-describir_estructura(simulaciones_limpias)
-describir_estadisticas(simulaciones_limpias)
-describir_categorias(simulaciones_limpias)
-describir_fechas(simulaciones_limpias)
+# 🔹 Limpieza
+df_prof_limpio = limpiar_simulacion_errores_profesional(df_prof)
+
+# 🔹 Mostrar datos limpios
+print("\nDATOS LIMPIOS")
+print(df_prof_limpio)
+
+# 🔹 Análisis
+print("\n--- ANÁLISIS PROFESIONALES ---")
+describir_estructura(df_prof_limpio)
+describir_estadisticas(df_prof_limpio)
+describir_categoricas(df_prof_limpio)
+describir_fechas(df_prof_limpio)
