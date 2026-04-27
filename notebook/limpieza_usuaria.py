@@ -44,7 +44,6 @@ def limpiar_simulacion_errores_usuaria(data_frame):
 
     data_frame_limpio=data_frame_limpio[data_frame_limpio['telefono'].str.len() == 10]
 
-
     #8. Eliminar duplicados
     data_frame_limpio=data_frame_limpio.drop_duplicates()
 
