@@ -16,7 +16,7 @@ def describir_estadisticas(data_frame_limpio):
 
 
 # Función para medir columnas categóricas
-def describir_categorias(data_frame_limpio):
+def describir_categoricas(data_frame_limpio):
     print("\n***** Frecuencias categóricas *****")
 
     print("Profesiones registradas:")
