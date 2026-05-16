@@ -73,3 +73,36 @@ describir_estructura(df_prof_limpio)
 describir_estadisticas(df_prof_limpio)
 describir_categoricas(df_prof_limpio)
 describir_fechas(df_prof_limpio)
+
+# ===== CONTACTOS DE EMERGENCIA =====
+from util.simulacion_errores_contacto_emergencia import generar_errores_contacto
+from notebook.limpieza_contacto_emergencia import limpiar_contactos
+from notebook.descripcion_contacto_emergencia import describir_contactos
+
+print("\n===== CONTACTOS DE EMERGENCIA =====")
+
+# 🔹 Simulación base
+from util.simulacion_contacto_emergencia import generar_simulacion_contacto
+
+contactos = generar_simulacion_contacto(10)
+
+# 🔹 Simulación con errores
+contactos_error = generar_errores_contacto(contactos)
+
+# 🔹 Convertir a DataFrame
+df_contacto = pd.DataFrame(contactos_error)
+
+# 🔹 Mostrar datos sucios
+print("\nDATOS SUCIOS (con errores)")
+print(df_contacto)
+
+# 🔹 Limpieza
+df_contacto_limpio = limpiar_contactos(contactos_error)
+
+# 🔹 Mostrar datos limpios
+print("\nDATOS LIMPIOS")
+print(df_contacto_limpio)
+
+# 🔹 Análisis
+print("\n--- ANÁLISIS CONTACTOS EMERGENCIA ---")
+describir_contactos(df_contacto_limpio)
